@@ -1,0 +1,9 @@
+.home {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    min-width: calc(100vh - 4rem);
+}
+
+.home li {
+    list-style: none;
+}

@@ -1,0 +1,36 @@
+footer {
+    width: 100%;
+    position: sticky;
+    background-color: #3c3c3b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0;
+}
+
+footer > div {
+    display: flex;
+}
+
+footer > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    background-color: #50504f;
+    margin: 0 1rem;
+}
+
+footer i, footer p {
+    color: #ffffff;
+}
+
+footer p {
+    font-family: Yantramanav,sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}

@@ -1,0 +1,28 @@
+nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    position: fixed;
+    z-index: 9999;
+    background-color: #ffffff;
+}
+
+nav strong {
+    font-family: 'Yantramanav', sans-serif;
+    font-weight: bold;
+    color: #f85555;
+    font-size: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    
+}
+
+nav p {
+    margin-bottom: 0;
+}

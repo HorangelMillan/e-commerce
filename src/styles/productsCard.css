@@ -1,0 +1,14 @@
+.productsCard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, auto));
+}
+
+.productsCard > div {
+    height: 300px;
+}
+
+.productsCard img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}

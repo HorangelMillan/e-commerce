@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import React from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import { Home, Login, ProductDetail, Purchases } from './pages/index'
 import './App.css';
+import { Container } from "react-bootstrap";
+import { Footer, LoadingScreen, Navbar } from "./components";
+import { useSelector } from 'react-redux';
+import ProtectedRoutes from './components/ProtectedRoutes';
 
 function App() {
+
+  const isLoading = useSelector(state => state.isLoading)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <HashRouter>
+        <Navbar />
+        <Container>
+          {isLoading && <LoadingScreen />}
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/shop/:id' element={<ProductDetail />} />
+            
+            <Route element={<ProtectedRoutes />}>
+              <Route path='/purchase' element={<Purchases />} />
+            </Route>
+            
+          </Routes>
+        </Container>
+        <Footer/>
+      </HashRouter>
     </div>
   );
 }

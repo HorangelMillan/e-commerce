@@ -1,0 +1,12 @@
+.sidebar {
+    top: 4rem;
+    position: fixed;
+    width: 15rem;
+    background-color: #FFFFFF;
+    z-index: 9999;
+    right: -15rem;
+}
+
+.show {
+ right: 0;
+}
