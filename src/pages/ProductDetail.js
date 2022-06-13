@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import '../styles/productDetail.css';
 import { addProduct } from '../store/slices/cart.slice';
-import { getProductsByCategory } from '../store/slices/products.slice';
+import { getProductByCategoryMod } from '../store/slices/products.slice';
 
 
 const ProductDetail = () => {
@@ -20,14 +20,15 @@ const ProductDetail = () => {
     useEffect(() => {
         axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products/${id}`)
             .then(res => {
+                console.log(res.data.data.product.categorie)
                 setProduct(res.data.data.product);
-                dispatch(getProductsByCategory(res.data.data.product.category));
+                dispatch(getProductByCategoryMod(res.data.data.product.category));
                 console.log(res.data);
             });
     }, []);
 
     const addProductFromShop = () => {
-        dispatch(addProduct(id, quantity))
+        dispatch(addProduct(id, quantity));
         setQuantity(0);
     }
 
@@ -63,7 +64,13 @@ const ProductDetail = () => {
             </div>
 
             <div className='product-similar'>
-                        {console.log(products)}
+                {
+                    products && products.map(product => (
+                        <div key={product.id}>
+                            <h1>{product.title}</h1>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     );
