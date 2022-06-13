@@ -20,9 +20,19 @@ const ProductsCard = () => {
             {
                 products.map(product => (
                     <div key={product.title}>
-                        <img src={product.productImgs[0]} alt="" onClick={() => navigate(`/product/${product.id}`)} />
-                        <p>{product.title}</p>
-                        <button onClick={() => dispatch(addProduct(product.id, 1))}>Add</button>
+                        <div onClick={() => navigate(`/shop/${product.id}`)}>
+                            <img src={product.productImgs[0]} alt="" />
+                        </div>
+                        <div>
+                            <b>{product.title}</b>
+                            <div>
+                                <div>
+                                    <span>Price</span>
+                                    <b>{product.price}</b>
+                                </div>
+                                <button onClick={() => dispatch(addProduct(product.id, 1))}><i className="fa-solid fa-cart-arrow-down"></i></button>
+                            </div>
+                        </div>
                     </div>
                 ))
 

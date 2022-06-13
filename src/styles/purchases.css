@@ -1,0 +1,11 @@
+.purchases {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.purchase-card {
+    border: 1px solid #dcd9d9;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}

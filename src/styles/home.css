@@ -1,9 +1,50 @@
 .home {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    min-width: calc(100vh - 4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.home > div:nth-child(2) {
+    width: 100%;
+    padding-left: 13.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .home li {
     list-style: none;
+}
+
+.home form {
+    height: 3rem;
+    margin: 0;
+    margin-bottom: 2rem;
+    padding: 0;
+    display: flex;
+    display: flex;
+    justify-content: center;
+}
+
+.home form > input {
+    width: 70%;
+    height: 100%;
+    border: 1px solid #dcd9d9;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    outline: none;
+}
+
+input::placeholder {
+    color: #cacaca;
+}
+
+.home form > button {
+    height: 100%;
+    background-color: #f85555;
+    outline: none;
+    border: none;
+    padding: 0 1rem;
+    color: #FFFFFF;
 }

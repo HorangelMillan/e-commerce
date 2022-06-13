@@ -12,7 +12,7 @@ const Navbar = () => {
 
     const showSidebar = () => {
         if (token) {
-            setHandleShow(!handleShow)
+            setHandleShow(!handleShow);
         } else {
             navigate('/login');
         }
@@ -21,10 +21,10 @@ const Navbar = () => {
     return (
         <>
             <nav>
-                <Link to="/"><strong>e-commerce</strong></Link>
-                <Link to="/login"><i className="fa-solid fa-user fa-lg"></i></Link >
-                <i onClick={() => showSidebar()} className="fa-solid fa-cart-shopping fa-lg"></i>
-                <Link to="/purchase"><i className="fa-solid fa-store fa-lg"></i></Link >
+                <div><Link to="/"><strong>e-commerce</strong></Link></div>
+                <Link to="/login"><div><i className="fa-solid fa-user fa-lg"></i></div></Link >
+                <div onClick={() => showSidebar()}><i className="fa-solid fa-cart-shopping fa-lg"></i></div>
+                <Link to="/purchase"><div><i className="fa-solid fa-store fa-lg"></i></div></Link >
             </nav>
 
             <Sidebar handleShow={handleShow} showSidebar={showSidebar} />

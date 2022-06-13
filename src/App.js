@@ -19,6 +19,7 @@ function App() {
         <Container>
           {isLoading && <LoadingScreen />}
           <Routes>
+
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/shop/:id' element={<ProductDetail />} />

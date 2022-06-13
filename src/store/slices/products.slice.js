@@ -30,8 +30,20 @@ export const productsFilter = (query) => dispatch => {
 
 export const getProductsByCategory = (id) => dispatch => {
     dispatch(setIsLoading(true));
-    return axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products?category=${id}`)
-        .then(res => dispatch(setProducts(res.data.data.products)))
+
+    const mod = () => {
+        if (typeof id === Number) {
+            return `https://ecommerce-api-react.herokuapp.com/api/v1/products?category=${id}`;
+        } else {
+            return `https://ecommerce-api-react.herokuapp.com/api/v1/products?query=${id}`;
+        };
+    };
+    
+    return axios.get(mod())
+        .then(res => {
+            dispatch(setProducts(res.data.data.products));
+            console.log(res.data, 'hola');
+        }).catch(error => console.log(error.response))
         .finally(() => dispatch(setIsLoading(false)));
 }
 

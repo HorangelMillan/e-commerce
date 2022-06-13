@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import { getPurchases } from '../store/slices/purchases.slice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import '../styles/purchases.css';
 
 const Purchases = () => {
-
-    const navigate = useNavigate();
 
     const purchases = useSelector(state => state.purchases);
 
@@ -16,14 +14,17 @@ const Purchases = () => {
     }, []);
 
     return (
-        <div>
+        <div className='purchases'>
             {
                 purchases.map(purchase => (
-                    <li key={purchase.id}>{purchase.cart.products.map(product => (
-                        <div key={product.title} onClick={() => navigate(`/product/${product.id}`)}>
-                            <h1>{product.title}</h1>
-                        </div>
-                    ))}</li>
+                    <li key={purchase.id}>
+                        {purchase.cart.products.map(product => (
+                            <div key={product.title} className="purchase-card">
+                                <p>{product.title}</p>
+                                
+                            </div>
+                        ))}
+                    </li>
                 ))
             }
         </div>

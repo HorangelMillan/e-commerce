@@ -2,15 +2,28 @@ nav {
     width: 100%;
     display: grid;
     grid-template-columns: 4fr 1fr 1fr 1fr;
-    justify-content: center;
-    align-items: center;
     height: 4rem;
     position: fixed;
     z-index: 9999;
     background-color: #ffffff;
+    
 }
 
-nav strong {
+nav > div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #dcd9d9;
+    border-bottom: 1px solid #dcd9d9;
+}
+
+nav > div:last-child {
+    border-right: none;
+}
+
+nav > div strong {
     font-family: 'Yantramanav', sans-serif;
     font-weight: bold;
     color: #f85555;
@@ -18,11 +31,50 @@ nav strong {
     padding-left: 1.5rem;
 }
 
-nav a {
+nav a > div {
     text-decoration: none;
-    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: #dcd9d9;
+    color: #9e9e9e;
 }
 
-nav p {
+nav > div p {
     margin-bottom: 0;
+}
+
+nav a > div {
+    border-bottom: 1px solid #dcd9d9;
+    text-decoration: none;
+}
+
+nav div > a {
+    text-decoration: none;
+}
+
+nav a:nth-child(2) > div {
+    border-bottom: 1px solid #dcd9d9;
+    border-right: 1px solid #dcd9d9;
+}
+
+nav > div:nth-child(2) {
+    justify-content: center;
+    border-left: none;
+
+}
+
+nav > div:nth-child(1) {
+    justify-content: flex-start;
+    border-left: none;
+}
+
+nav > div {
+    color: #9e9e9e;
+}
+
+nav > div:nth-child(3) {
+    cursor: pointer;
 }

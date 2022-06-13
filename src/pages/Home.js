@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { productsFilter } from '../store/slices/products.slice';
-import { Button, FormControl, InputGroup } from "react-bootstrap";
 import { Filter, ProductsCard } from '../components';
 import '../styles/home.css';
 
@@ -20,24 +19,14 @@ const Home = () => {
             <Filter />
 
             <div>
-                <InputGroup className="mb-3">
-                    <FormControl
-                        placeholder="Recipient's product"
-                        aria-label="Recipient's product"
-                        aria-describedby="basic-addon2"
-                        onChange={e => setSearch(e.target.value)}
-                        value={search}
-                    />
-                    <Button
-                        variant="outline-secondary"
-                        id="button-addon2"
-                        onClick={filterProducts}
-                    >
-                        Button
-                    </Button>
-                </InputGroup>
+                <form>
+                    <input type="text" onChange={e => setSearch(e.target.value)} value={search} placeholder="What are you looking for?" />
+                    <button onClick={filterProducts}>
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
 
-                <ProductsCard/>
+                <ProductsCard />
 
             </div>
         </div>

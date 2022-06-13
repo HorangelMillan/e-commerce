@@ -21,6 +21,13 @@ export const getPurchases = () => (dispatch) => {
         .then(res => dispatch(setPurchases(res.data.data.purchases)))
         .catch(error => console.log(error.response))
         .finally(() => dispatch(setIsLoading(false)));
-}
+};
+
+export const purchase = (id) => (dispatch) => {
+    dispatch(setIsLoading(true));
+    return axios.post('https://ecommerce-api-react.herokuapp.com/api/v1/purchases', {}, getConfig())
+        .then(() => dispatch(getPurchases()))
+        .finally(() => dispatch(setIsLoading(false)));
+};
 
 export default purchasesSlice.reducer;

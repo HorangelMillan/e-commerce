@@ -32,6 +32,7 @@ const Login = () => {
 
     const logOut = () => {
         localStorage.clear();
+        navigate('/login');
     };
 
     return (
@@ -39,7 +40,7 @@ const Login = () => {
             {
                 isLoged ? (
                     <div>
-                        <i class="fa-solid fa-circle-user fa-xl"></i>
+                        <i className="fa-solid fa-circle-user fa-xl"></i>
                         <b>{user.firstName} {user.lastName}</b>
                         <button onClick={logOut}>logout</button>
                     </div>

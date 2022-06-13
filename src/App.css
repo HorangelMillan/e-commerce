@@ -5,5 +5,16 @@
 }
 
 .App .container {
-    padding: 4rem 0 0 0;
+    padding: 7rem 0 0 0;
+    min-height: 100vh;
+    margin: 0;
+    max-width: calc(100%);
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
 }
