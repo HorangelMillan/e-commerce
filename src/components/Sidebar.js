@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { purchase } from '../store/slices/purchases.slice';
 import { useNavigate } from 'react-router-dom';
 import '../styles/sidebar.css';
-import { useCallback } from 'react';
 
 const Sidebar = ({ handleShow, showSidebar }) => {
 
