@@ -19,16 +19,21 @@ const Sidebar = ({ handleShow, showSidebar }) => {
             dispatch(getCart());
         };
 
-        
+
     }, []);
 
     useEffect(() => {
         if (cart.products) {
+            let catchTotal = 0;
+
             for (let i = 0; i < cart.products.length; i++) {
-                setTotal(total + parseInt(cart.products[i].price));
+                catchTotal = catchTotal + parseInt(cart.products[i].price * cart.products[i].productsInCart.quantity);
+                console.log(parseInt(cart.products[i].price), i, catchTotal)
             };
+
+            setTotal(catchTotal);
         };
-    }, [1]);
+    }, [cart]);
 
 
     const purchaseRedirect = () => {
