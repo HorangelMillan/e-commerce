@@ -14,9 +14,9 @@ const ProductDetail = () => {
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(0);
     const [translate, setTranslate] = useState(0);
+    const products = useSelector(state => state.products);
 
     const dispatch = useDispatch();
-    const products = useSelector(state => state.products);
 
     useEffect(() => {
         axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products/${id}`)
@@ -31,19 +31,17 @@ const ProductDetail = () => {
     const addProductFromShop = () => {
         dispatch(addProduct(id, quantity));
         setQuantity(0);
-    }
+    };
 
     const translateImg = (mod, limit) => {
 
-            if (mod === 'next' && translate <= limit - 2) {
-                setTranslate(translate + 1);
-            } else if (mod === 'previous' && translate > 0) {
-                setTranslate(translate - 1);
-            };
+        if (mod === 'next' && translate <= limit - 2) {
+            setTranslate(translate + 1);
+        } else if (mod === 'previous' && translate > 0) {
+            setTranslate(translate - 1);
+        };
 
     };
-
-    console.log(translate)
 
     return (
         <div className='product-detail'>
@@ -51,7 +49,9 @@ const ProductDetail = () => {
             <div className='product'>
                 <div className='product-image'>
                     <div className='preview'>
-                        <button className='previous' onClick={() => translateImg('previous', product.productImgs.length)}><i className="fas fa-chevron-left"></i></button>
+                        <button className='previous' onClick={() => translateImg('previous', product.productImgs.length)}>
+                            <i className="fas fa-chevron-left"></i>
+                        </button>
                         <ul>
                             {
                                 product.productImgs && product.productImgs.map(productImg => (
@@ -63,7 +63,9 @@ const ProductDetail = () => {
                                 ))
                             }
                         </ul>
-                        <button className='next' onClick={() => translateImg('next', product.productImgs.length)}><i className="fas fa-chevron-right"></i></button>
+                        <button className='next' onClick={() => translateImg('next', product.productImgs.length)}>
+                            <i className="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                     <div className='galery'>
                         {

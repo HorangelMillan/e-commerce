@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { purchase } from '../store/slices/purchases.slice';
 import { useNavigate } from 'react-router-dom';
 import '../styles/sidebar.css';
+import { useCallback } from 'react';
 
 const Sidebar = ({ handleShow, showSidebar }) => {
 
@@ -18,7 +19,18 @@ const Sidebar = ({ handleShow, showSidebar }) => {
         if (token) {
             dispatch(getCart());
         };
+
+        
     }, []);
+
+    useEffect(() => {
+        if (cart.products) {
+            for (let i = 0; i < cart.products.length; i++) {
+                setTotal(total + parseInt(cart.products[i].price));
+            };
+        };
+    }, [1]);
+
 
     const purchaseRedirect = () => {
         dispatch(purchase());
@@ -33,7 +45,7 @@ const Sidebar = ({ handleShow, showSidebar }) => {
                 <ul>
                     {
                         cart.products && cart.products.map(product => (
-                            <li key={product.id} onLoad={() => setTotal(total + product.price * product.productsInCart.quantity)}>
+                            <li key={product.id}>
                                 <p>{product.brand}</p>
                                 <b>{product.title}</b>
                                 <div>
@@ -46,7 +58,7 @@ const Sidebar = ({ handleShow, showSidebar }) => {
                     }
                 </ul>
                 <div>
-                    <h6>Total: <p>${}</p></h6>
+                    <h6>Total: <p>${total}</p></h6>
                     <button onClick={() => purchaseRedirect()}>Checkout</button>
                 </div>
             </div>
