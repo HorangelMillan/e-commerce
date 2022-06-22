@@ -9,6 +9,8 @@ import { getProductByCategoryMod } from '../store/slices/products.slice';
 
 const ProductDetail = () => {
 
+    let imgNumber = -1;
+
     const { id } = useParams();
 
     const [product, setProduct] = useState({});
@@ -21,10 +23,8 @@ const ProductDetail = () => {
     useEffect(() => {
         axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products/${id}`)
             .then(res => {
-                console.log(res.data.data.product.categorie)
                 setProduct(res.data.data.product);
                 dispatch(getProductByCategoryMod(res.data.data.product.category));
-                console.log(res.data);
             });
     }, []);
 
@@ -55,11 +55,9 @@ const ProductDetail = () => {
                         <ul>
                             {
                                 product.productImgs && product.productImgs.map(productImg => (
-
-                                    <li key={productImg} style={{ transform: `translateX(-${translate}00%)` }}>
+                                    <li key={productImg} style={{ transform: `translateX(-${translate}00%)` }} onClick={() => setTranslate()}>
                                         <img src={productImg} alt="" />
                                     </li>
-
                                 ))
                             }
                         </ul>
@@ -69,22 +67,28 @@ const ProductDetail = () => {
                     </div>
                     <div className='galery'>
                         {
-                            product.productImgs && product.productImgs.map(productImg => (
-                                <div key={productImg}>
-                                    <img src={productImg} alt="" />
-                                </div>
-                            ))
+                            product.productImgs && product.productImgs.map(productImg => {
+                                imgNumber = imgNumber + 1
+                                return (
+                                    <div key={productImg} onClick={e => setTranslate(e.target.classList[0])}><img className={`${imgNumber}`} src={productImg} alt="" /></div>
+                                );
+                            })
                         }
                     </div>
                 </div>
 
                 <div className='product-shop'>
 
+                    <h2>{product.title}</h2>
+                    <p>{product.description}</p>
+
                     <input type="number" onChange={e => setQuantity(e.target.value)} value={quantity} />
                     <button onClick={() => addProductFromShop()}>Add to cart</button>
 
                 </div>
             </div>
+
+            <span>Similar products</span>
 
             <div className='product-similar'>
                 {

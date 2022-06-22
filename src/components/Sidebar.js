@@ -18,8 +18,6 @@ const Sidebar = ({ handleShow, showSidebar }) => {
         if (token) {
             dispatch(getCart());
         };
-
-
     }, []);
 
     useEffect(() => {
@@ -34,7 +32,6 @@ const Sidebar = ({ handleShow, showSidebar }) => {
             setTotal(catchTotal);
         };
     }, [cart]);
-
 
     const purchaseRedirect = () => {
         dispatch(purchase());
