@@ -6,7 +6,6 @@ import '../styles/productDetail.css';
 import { addProduct } from '../store/slices/cart.slice';
 import { getProductByCategoryMod } from '../store/slices/products.slice';
 
-
 const ProductDetail = () => {
 
     let imgNumber = -1;
@@ -41,6 +40,8 @@ const ProductDetail = () => {
             setTranslate(translate - 1);
         };
 
+        console.log(translate);
+
     };
 
     return (
@@ -55,7 +56,7 @@ const ProductDetail = () => {
                         <ul>
                             {
                                 product.productImgs && product.productImgs.map(productImg => (
-                                    <li key={productImg} style={{ transform: `translateX(-${translate}00%)` }} onClick={() => setTranslate()}>
+                                    <li key={productImg} style={{ transform: `translateX(-${translate}00%)` }}>
                                         <img src={productImg} alt="" />
                                     </li>
                                 ))
@@ -70,7 +71,7 @@ const ProductDetail = () => {
                             product.productImgs && product.productImgs.map(productImg => {
                                 imgNumber = imgNumber + 1
                                 return (
-                                    <div key={productImg} onClick={e => setTranslate(e.target.classList[0])}><img className={`${imgNumber}`} src={productImg} alt="" /></div>
+                                    <div key={productImg} onClick={e => setTranslate(parseInt(e.target.classList[0]))}><img className={`${imgNumber}`} src={productImg} alt="" /></div>
                                 );
                             })
                         }
